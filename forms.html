@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BCCI - Merchandise Form</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+        nav ul li a:hover,
+        nav ul li a:focus,
+        nav ul li a:active {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="BCCI-Logo.png" alt="BCCI Logo" class="logo">
+        <h2>Board of Control for Cricket in India</h2>
+        <h1>Form Tags Demo - Buy Official Merchandise</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="text.html">Text Formats</a></li>
+                <li><a href="lists.html">Lists</a></li>
+                <li><a href="tables.html">Tables</a></li>
+                <li><a href="forms.html">Forms</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2 id="formHeading">Merchandise Order Form: This webpage demonstrates buying of Merchandise through FORM TAGS</h2>
+            <form id="merchForm" onsubmit="return handleSubmit()">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br><br>
+
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob" required><br><br>
+
+                <label for="mobile">Mobile Number:</label>
+                <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" required><br><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required><br><br>
+
+                <label>Gender:</label>
+                <input type="radio" id="male" name="gender" value="male" required>
+                <label for="male">Male</label>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label><br><br>
+
+                <label for="cricketer">Favorite Cricketer Merchandise:</label>
+                <select id="cricketer" name="cricketer" required>
+                    <option value="virat_kohli">Virat Kohli</option>
+                    <option value="rohit_sharma">Rohit Sharma</option>
+                    <option value="jasprit_bumrah">Jasprit Bumrah</option>
+                    <option value="kl_rahul">KL Rahul</option>
+                    <option value="ravindra_jadeja">Ravindra Jadeja</option>
+                    <option value="others">Others</option>
+                </select><br><br>
+
+                <label for="comments">Additional Comments:</label><br>
+                <textarea id="comments" name="comments" rows="4" cols="50" placeholder="If you selected 'Others', please specify the cricketer here..."></textarea><br><br>
+
+                <label for="validationDoc">Upload Address Validation Document (PDF, DOC, JPG, PNG):</label>
+                <input type="file" id="validationDoc" name="validationDoc" accept=".pdf, .doc, .jpg, .jpeg, .png" required><br><br>
+
+                <input type="submit" value="Submit">
+            </form>
+            <div id="thankYouMessage" style="display: none;">
+                <h2>Thank you for your order, <span id="userName"></span>!</h2>
+                <a href="#" onclick="showForm()">Place another order</a> or <a href="index.html">Go to Home</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p> MONISH GOWDA SR | 1MJ22IS062 | 2025 BCCI</p>
+    </footer>
+    <script>
+        function handleSubmit() {
+            var name = document.getElementById("name").value;
+            document.getElementById("userName").innerText = name;
+            document.getElementById("thankYouMessage").style.display = "block";
+            document.getElementById("merchForm").style.display = "none";
+            document.getElementById("formHeading").style.display = "none";
+            return false; // Prevent actual form submission
+        }
+
+        function showForm() {
+            document.getElementById("thankYouMessage").style.display = "none";
+            document.getElementById("merchForm").reset(); // Clear the form fields
+            document.getElementById("merchForm").style.display = "block";
+            document.getElementById("formHeading").style.display = "block";
+        }
+    </script>
+</body>
+</html>
